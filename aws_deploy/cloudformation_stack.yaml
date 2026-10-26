@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: VoltSight AI - OpenCV 5 & Agentic Vision Stack on AWS Graviton (t4g.small Free Tier)
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t4g.small
+    Description: AWS Graviton2 Arm64 instance for OpenCV / COOL workload
+Resources:
+  VoltSightEvidenceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+Outputs:
+  EvidenceBucketName:
+    Value: !Ref VoltSightEvidenceBucket
+    Description: S3 Bucket for OpenCV 5 Annotated Evidence and Agent Traces
